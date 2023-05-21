@@ -1,5 +1,13 @@
+:root {
+	--background-color: hsl(51, 58%, 86%);
+	--color: hsl(222, 35%, 19%);
+}
+
+
 body {
 	font-family: system-ui;
+	color: var(--color);
+	background-color: var(--background-color);
 }
 
 a {
