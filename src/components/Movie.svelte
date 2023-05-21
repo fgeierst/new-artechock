@@ -12,7 +12,7 @@
 			{day.substring(0, 2).toUpperCase()}
 
 			{#each times as time}
-				{time} 
+				<span class="time">{time}</span>
 			{/each}
 		</li>
 		{/if}
@@ -21,13 +21,23 @@
 
 <style>
 	h3 {
-		margin: 0;
+		margin: 0 0 .5rem 0;
 	}
+
 	.times {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 		display: flex;
-		gap: 1rem;
+		flex-wrap: wrap;
+		gap: .5em 1em;
 	}
+
+	.time {
+		border: 1px solid;
+		border-radius: .3em;
+		padding: 0 .2em;
+		margin-inline-end: .2em;
+	}
+
 </style>
