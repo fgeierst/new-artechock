@@ -1,11 +1,11 @@
 <script>
-	export let icon = 'ℹ️';
+	export let icon = '⚠️';
 </script>
 
 <div class="disclaimer">
 	<span>{icon}</span> 
 	<p>
-		<slot />
+		<slot>Note this is a prototype with mockup data, visit <a href="https://www.artechock.de/">artechock.de</a> to see the real movie showtimes.</slot>
 	</p>	
 </div>
 

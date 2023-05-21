@@ -1,19 +1,19 @@
 <script>
 	import Cinema from '../components/Cinema.svelte';
-	import Info from '../components/Info.svelte';
-	import { data } from '../lib/data.js';
+	import { cinemas } from '../lib/data.js';
 
 </script>
 
-<h1>Munich Movie Showtimes</h1>
+<h1 class="visually-hidden">Cinemas</h1>
 
-<Info icon="⚠️">Note this is a prototype with mockup data, visit <a href="https://www.artechock.de/">artechock.de</a> to see the real movie showtimes.</Info>
 
 <div class="cinema-list">
-	{#each data[0].cinemas as cinema}
+	{#each $cinemas as cinema}
 		<Cinema {cinema} />
 	{/each}
 </div>
+
+
 
 <style>
 	

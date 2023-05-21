@@ -1,4 +1,6 @@
-export let data = [
+import { writable, derived } from 'svelte/store';
+
+const data = [
 	{
 		date: '2023-05-18',
 		cinemas: [
@@ -468,6 +470,37 @@ export let data = [
 			}
 		]
 	}
-]
+];
+
+export const cinemas = writable(data[0].cinemas);
 	
-	
+export const movies = derived(
+	cinemas,
+	$cinemas => {
+		const movies = [];
+		$cinemas.forEach(cinema => {
+			cinema.movies.forEach(movie => {
+				// if a move with the same title does not already exist
+				if (!movies.find(m => m.title === movie.title)) {
+					movies.push({
+						title: movie.title,
+						cinemas: [{
+							name: cinema.name,
+							times: movie.times
+						}]
+					});
+				} else {
+					const existingMovie = movies.find(m => m.title === movie.title);
+					existingMovie.cinemas.push({
+						name: cinema.name,
+						times: movie.times
+					})
+
+				}
+			})
+		})
+		movies.sort((a, b) => a.title.localeCompare(b.title));
+		return movies;
+	}
+);
+
